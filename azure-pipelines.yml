@@ -1,52 +1,52 @@
-# Python to Linux Web App on Azure
-# Build your Python project and deploy it to Azure as a Linux Web App.
-# Change python version to one thats appropriate for your application.
-# https://docs.microsoft.com/azure/devops/pipelines/languages/python
-
+# Starter pipeline    
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
 trigger:
-- main
+- master
+
+# TODO: Replace the agent pool name
+pool: myAgentPool
 
 variables:
-  # Azure Resource Manager connection created during pipeline creation
-  azureServiceConnectionId: '78586c86-c05d-4b6d-ad1c-29b4201fd65d'
-
-  # Web app name
-  webAppName: 'flask-sklearn'
-
-  # Agent VM image name
-  vmImageName: 'ubuntu-latest'
+  # TODO: Replace the service connection name
+  azureServiceConnectionId: 'myserviceconnectdfnt'
+  
+  # TODO: Replace 'mywebapp193576' with the existing Web App name
+  webAppName: 'myflaskmlwebappy'
 
   # Environment name
-  environmentName: 'flask-sklearn'
+  environmentName: 'flask-ml-service'
 
   # Project root folder. Point to the folder containing manage.py file.
   projectRoot: $(System.DefaultWorkingDirectory)
 
-  # Python version: 3.7
-  pythonVersion: '3.7'
+  appName: 'myflaskmlwebappy'
+  deployToSlotOrASE: true
+  resourceGroupName: 'Azuredevops'
+  slotName: 'production'
+  package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+  runtimeStack: 'PYTHON|3.8'
+  startUpCommand: 'python app.py'
 
 stages:
 - stage: Build
   displayName: Build stage
   jobs:
   - job: BuildJob
-    pool:
-      vmImage: $(vmImageName)
-    steps:
-    - task: UsePythonVersion@0
-      inputs:
-        versionSpec: '$(pythonVersion)'
-      displayName: 'Use Python $(pythonVersion)'
-
+    pool: myAgentPool
+    steps:    
     - script: |
-        python -m venv antenv
-        source antenv/bin/activate
-        python -m pip install --upgrade pip
-        pip install setup
-        pip install -r requirements.txt
+        python3.8 -m pip install --upgrade pip
+        python3.8 -m pip install setup
+        python3.8 -m pip install -r requirements.txt
       workingDirectory: $(projectRoot)
-      displayName: "Install requirements"
-
+    - script: |
+        export PATH=$HOME/.local/bin:$PATH
+        make install
+        make lint
+      workingDirectory: $(projectRoot)
+      displayName: 'Run lint tests'
     - task: ArchiveFiles@2
       displayName: 'Archive files'
       inputs:
@@ -66,22 +66,17 @@ stages:
   condition: succeeded()
   jobs:
   - deployment: DeploymentJob
-    pool:
-      vmImage: $(vmImageName)
+    pool: myAgentPool
     environment: $(environmentName)
     strategy:
       runOnce:
         deploy:
           steps:
-
-          - task: UsePythonVersion@0
-            inputs:
-              versionSpec: '$(pythonVersion)'
-            displayName: 'Use Python version'
-
           - task: AzureWebApp@1
-            displayName: 'Deploy Azure Web App : flask-sklearn'
+            displayName: 'Deploy Azure Web App : flask-ml-service'
             inputs:
-              azureSubscription: $(azureServiceConnectionId)
-              appName: $(webAppName)
-              package: $(Pipeline.Workspace)/drop/$(Build.BuildId).zip
+                appType: 'webAppLinux'
+                azureSubscription: $(azureServiceConnectionId)
+                appName: $(webAppName)
+                package: $(Pipeline.Workspace)/drop/$(Build.BuildId).zip
+
