@@ -2,7 +2,7 @@ setup:
 	python3 -m venv ~/.flask-sklearn
 
 install:
-	pip install --upgrade pip &&\
+	pip install --upgrade pip && \
 		pip install -r requirements.txt
 
 test:
