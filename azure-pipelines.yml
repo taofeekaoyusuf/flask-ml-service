@@ -13,7 +13,7 @@ variables:
   azureServiceConnectionId: 'myserviceconnectdfnt'
   
   # TODO: Replace 'mywebapp193576' with the existing Web App name
-  webAppName: 'mynewflaskmlwebappy'
+  webAppName: 'myflaskmlwebappy'
 
   # Environment name
   environmentName: 'flask-ml-service'
@@ -21,7 +21,7 @@ variables:
   # Project root folder. Point to the folder containing manage.py file.
   projectRoot: $(System.DefaultWorkingDirectory)
 
-  appName: 'mynewflaskmlwebappy'
+  appName: 'myflaskmlwebappy'
   deployToSlotOrASE: true
   resourceGroupName: 'Azuredevops'
   slotName: 'production'
@@ -56,7 +56,7 @@ stages:
         archiveFile: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
         replaceExistingArchive: true
 
-    - upload: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
+    - publish: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
       displayName: 'Upload package'
       artifact: drop
 

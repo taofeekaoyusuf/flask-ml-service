@@ -24,7 +24,7 @@ curl -d '{
       "0":4.98
    }
 }'\
-     -H "Content-Type: application/json" \
-     -X POST https://mynewflaskmlwebappy.azurewebsites.net:$PORT/predict 
-     #your application name <yourappname>goes here
+   -H "Content-Type: application/json" \
+   -X POST https://myflaskmlwebappy.azurewebsites.net:$PORT/predict 
+   #your application name <yourappname>goes here
 

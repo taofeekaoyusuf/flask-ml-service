@@ -24,5 +24,5 @@ curl -d '{
       "0":4.98
    }
 }'\
-     -H "Content-Type: application/json" \
-     -X POST http://localhost:$PORT/predict
+   -H "Content-Type: application/json" \
+   -X POST http://localhost:$PORT/predict
