@@ -4,7 +4,6 @@ import logging
 
 import pandas as pd
 from sklearn.externals import joblib
-from joblib import load
 from sklearn.preprocessing import StandardScaler
 
 app = Flask(__name__)
@@ -21,14 +20,13 @@ def scale(payload):
 
 @app.route("/")
 def home():
-    html = "<h3>Sklearn Prediction Home via Azure CI/CD Pipeline</h3>"
+    html = "<h3>Sklearn Prediction Home</h3>"
     return html.format(format)
 
 # TO DO:  Log out the prediction value
 @app.route("/predict", methods=['POST'])
 def predict():
     """Performs an sklearn prediction
-
     input looks like:
             {
     "CHAS":{
@@ -49,10 +47,8 @@ def predict():
     "LSTAT":{
        "0":4.98
     }
-
     result looks like:
     { "prediction": [ 20.35373177134412 ] }
-
     """
 
     try:
@@ -71,3 +67,4 @@ def predict():
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000, debug=True)
+
