@@ -1,5 +1,6 @@
 Flask
 pandas
 scikit-learn
-pytest
 pylint
+pytest
+
