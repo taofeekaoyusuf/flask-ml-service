@@ -28,11 +28,11 @@ A short [demo](#demo) concludes the documentation.
 
 ## Project Plan
 
-The [yearly project plan](../../raw/main/projectplan/project-plan_2021.xlsx) depicts that DevOps automation is one essential step in the context of the overall project planned for Q2.
+The [yearly project plan](https://docs.google.com/spreadsheets/d/1sBpBvsHc10Ye5TirvqN2-NznjpvUYs74U5Rk04GktDU/edit?pli=1#gid=1348135932) depicts that DevOps automation is one essential step in the context of the overall project planned for Q2.
 
-The [quarterly project plan](../../raw/main/projectplan/project-plan_2021_Q2.xlsx) details the steps necessary for building the CI-CD pipeline and estimates the week by week deliverables as well as the effort associated to each deliverable in T-Shirt-Sizes (S,M,L).
+The [quarterly project plan](https://docs.google.com/spreadsheets/d/1sBpBvsHc10Ye5TirvqN2-NznjpvUYs74U5Rk04GktDU/edit?pli=1#gid=1348135932) details the steps necessary for building the CI-CD pipeline and estimates the week by week deliverables as well as the effort associated to each deliverable in T-Shirt-Sizes (S,M,L).
 
-The [Trello board](https://trello.com/b/ppxOVR52/ml-application) is then used for task planning and tracking.
+The [Trello board](https://trello.com/b/Ey9sWsqr/ci-cd-pipeline-operational-procedure) is then used for task planning and tracking.
 
 
 ## Instructions
