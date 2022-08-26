@@ -37,7 +37,7 @@ stages:
   displayName: Build stage
   jobs:
   - job: BuildJob
-    pool: pool
+    pool: myAgentPool
     steps:    
     - script: |
         python3.7 -m pip install --upgrade pip
@@ -71,7 +71,7 @@ stages:
   condition: succeeded()
   jobs:
   - deployment: DeploymentJob
-    pool: pool
+    pool: myAgentPool
     environment: $(environmentName)
     strategy:
       runOnce:
