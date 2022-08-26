@@ -26,7 +26,7 @@ variables:
   resourceGroupName: 'Azuredevops'
   slotName: 'production'
   package: '$(System.DefaultWorkingDirectory)/**/*.zip'
-  runtimeStack: 'PYTHON|3.8'
+  runtimeStack: 'PYTHON|3.7'
   startUpCommand: 'python app.py'
 
 stages:
