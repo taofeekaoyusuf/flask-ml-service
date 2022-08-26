@@ -40,6 +40,7 @@ stages:
         python3.7 -m pip install --upgrade pip
         python3.7 -m pip install setup
         python3.7 -m pip install -r requirements.txt
+        python3.7 -m pip install zip
       workingDirectory: $(projectRoot)
     - script: |
         export PATH=$HOME/.local/bin:$PATH
@@ -47,6 +48,7 @@ stages:
         make lint
       workingDirectory: $(projectRoot)
       displayName: 'Run lint tests'
+      
     - task: ArchiveFiles@2
       displayName: 'Archive files'
       inputs:
@@ -72,6 +74,12 @@ stages:
       runOnce:
         deploy:
           steps:
+            
+          - task: UsePythonVersion@0
+            inputs:
+              versionSpec: '$(pythonVersion)'
+            displayName: 'Use Python version'
+
           - task: AzureWebApp@1
             displayName: 'Deploy Azure Web App : flask-ml-service'
             inputs:
@@ -79,4 +87,3 @@ stages:
                 azureSubscription: $(azureServiceConnectionId)
                 appName: $(webAppName)
                 package: $(Pipeline.Workspace)/drop/$(Build.BuildId).zip
-
