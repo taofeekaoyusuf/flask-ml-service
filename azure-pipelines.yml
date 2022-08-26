@@ -15,6 +15,9 @@ variables:
   # TODO: Replace 'mywebapp193576' with the existing Web App name
   webAppName: 'myflaskmlwebappy'
 
+  # Agent VM image name
+  vmImageName: 'ubuntu-latest'
+
   # Environment name
   environmentName: 'flask-ml-service'
 
@@ -34,7 +37,8 @@ stages:
   displayName: Build stage
   jobs:
   - job: BuildJob
-    pool: myAgentPool
+    pool:
+      vmImage: $(vmImageName)
     steps:    
     - script: |
         python3.7 -m pip install --upgrade pip
@@ -51,7 +55,7 @@ stages:
     - task: ArchiveFiles@2
       displayName: 'Archive files'
       inputs:
-        rootFolderOrFile: '$(Build.SourcesDirectory)'
+        rootFolderOrFile: '$(projectRoot)'  # Build.SourcesDirectory
         includeRootFolder: false
         archiveType: 'zip'
         archiveFile: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
@@ -68,7 +72,8 @@ stages:
   condition: succeeded()
   jobs:
   - deployment: DeploymentJob
-    pool: myAgentPool
+    pool: 
+      vmImage: $(vmImageName)
     environment: $(environmentName)
     strategy:
       runOnce:
@@ -82,3 +87,4 @@ stages:
                 azureSubscription: $(azureServiceConnectionId)
                 appName: $(webAppName)
                 package: $(Pipeline.Workspace)/drop/$(Build.BuildId).zip
+
