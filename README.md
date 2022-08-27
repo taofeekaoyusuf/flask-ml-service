@@ -86,7 +86,7 @@ Run the application locally:
 (.flask-ml-service) azureuser@Azure:~/flask-ml-service$ flask run
 ```
 
-![Run project](screenshots/S3-flask-run.PNG "Run project")
+![Run project](snapshots/Run_Project_Locally.png "Run project")
 
 Test it locally in a new Azure cloud shell (as your first shell is blocked by 'flask run') :
 ```bash
