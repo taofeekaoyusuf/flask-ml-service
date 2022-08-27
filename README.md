@@ -1,7 +1,5 @@
-[![Python application test with Github Actions](https://github.com/imhofmi/flask-ml-service/actions/workflows/python-app.yml/badge.svg)](https://github.com/taofeekaoyusuf/flask-ml-service/actions/workflows/python-app.yml)
-
 # Agile Development with Azure Project: Building a CI/CD Pipeline
-
+[![Python application test with Github Actions](https://github.com/taofeekaoyusuf/flask-ml-service/actions/workflows/main.yml/badge.svg)](https://github.com/taofeekaoyusuf/flask-ml-service/actions/workflows/main.yml)
 ## Overview
 This project demonstrates the advantages of automating DevOps with CI/CD pipelines.
 A Machine Learning web application is built, test, and deployed using Github Actions and Azure pipelines.
@@ -20,11 +18,7 @@ A short [demo](#demo) concludes the documentation.
 
 ## Status
 
-[![Python application test with Github Actions](https://github.com/taofeekaoyusuf/flask-ml-service/actions/workflows/python-app.yml/badge.svg)](https://github.com/taofeekaoyusuf/flask-ml-service/actions/workflows/python-app.yml)
-
-<!---
-[![Build Status](https://dev.azure.com/daimler-mic/ddpdev-azure-devops/_apis/build/status/taofeekaoyusuf.flask-ml-service?branchName=main)](https://dev.azure.com/daimler-mic/ddpdev-azure-devops/_build/latest?definitionId=7205&branchName=main)
--->
+[![Python application test with Github Actions](https://github.com/taofeekaoyusuf/flask-ml-service/actions/workflows/main.yml/badge.svg)](https://github.com/taofeekaoyusuf/flask-ml-service/actions/workflows/main.yml)
 
 ## Project Plan
 
@@ -205,7 +199,7 @@ The pipeline is triggered by the commit:
 ![Next pipeline run](snapshots/triggers.png "Next pipeline run")
 
 After the pipeline run completed successfully the changed application name is visible:
-![Updated webapp](screenshots/S12-webapp-running-new-name.PNG "Updated webapp")
+![Updated webapp](snapshots/WebApp_CI-CD_trigger_Update.png "Updated webapp")
 
 
 ## Enhancements
@@ -217,7 +211,7 @@ Future improvements include but are not limited to:
 
 ## Demo
 
-A short demo demonstrates the main steps of the project:
+A short demo demonstrates the main steps of the project can be found at this YouTube link:
 [Demo Video](../../raw/main/demo/demo.mp4)
 
 The demo covers the following steps:
