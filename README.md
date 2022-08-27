@@ -202,7 +202,7 @@ Change the application name in app.py from 'Sklearn Prediction Home' to 'Sklearn
 ![Change application name](snapshots/initiating_CI-CD_trigger.png "Change application name")
 
 The pipeline is triggered by the commit:
-![Next pipeline run](snapshots/trigger-CI-CD.png "Next pipeline run")
+![Next pipeline run](snapshots/triggers.png "Next pipeline run")
 
 After the pipeline run completed successfully the changed application name is visible:
 ![Updated webapp](screenshots/S12-webapp-running-new-name.PNG "Updated webapp")
@@ -221,8 +221,8 @@ A short demo demonstrates the main steps of the project:
 [Demo Video](../../raw/main/demo/demo.mp4)
 
 The demo covers the following steps:
-> Welcome to the demo of our agile development project.
-> We built a machine learning application and automated testing and provisioning by continuous integration and continuous deployment using pipelines.
+> Welcome to the demo of the Agile project development.
+> We built a machine learning application and automated testing and provisioning by continuous integration and continuous deployment using Microsoft Azure pipelines.
 >
 > As shown in the project architecture the source code is maintained in Github.
 > The project can be manually checked out in cloud shell and tested by calling 'make all'.
