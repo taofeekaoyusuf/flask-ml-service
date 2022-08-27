@@ -185,6 +185,11 @@ Under 'Pipelines' you should now see a first successfull run of the pipeline inc
 
 ![pipeline run](snapshots/Azure-Pipeline-Deployment_Passed_Successfully.png "pipeline run")
 
+Coming back to the Pipeline page, we will observe successful build and deployment:
+
+![pipeline success]( "pipeline success")
+
+
 From now on every change to your code will trigger the CI/CD pipeline and update your webapp accordingly:
 
 Change the application name in app.py from 'Sklearn Prediction Home' to 'Sklearn Prediction Home via Azure CI/CD Pipeline' and commit it:
