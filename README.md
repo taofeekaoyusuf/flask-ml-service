@@ -187,7 +187,7 @@ Under 'Pipelines' you should now see a first successfull run of the pipeline inc
 
 Coming back to the Pipeline page, we will observe successful build and deployment:
 
-![pipeline success]( "pipeline success")
+![pipeline success](snapshots/Azure_Pipeline_Success.png "pipeline success")
 
 
 From now on every change to your code will trigger the CI/CD pipeline and update your webapp accordingly:
