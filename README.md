@@ -1,4 +1,4 @@
-[![Python application test with Github Actions](https://github.com/imhofmi/flask-sklearn/actions/workflows/python-app.yml/badge.svg)](https://github.com/imhofmi/flask-sklearn/actions/workflows/python-app.yml)
+[![Python application test with Github Actions](https://github.com/imhofmi/flask-ml-service/actions/workflows/python-app.yml/badge.svg)](https://github.com/taofeekaoyusuf/flask-ml-service/actions/workflows/python-app.yml)
 
 # Agile Development with Azure Project: Building a CI/CD Pipeline
 
@@ -20,10 +20,10 @@ A short [demo](#demo) concludes the documentation.
 
 ## Status
 
-[![Python application test with Github Actions](https://github.com/imhofmi/flask-sklearn/actions/workflows/python-app.yml/badge.svg)](https://github.com/imhofmi/flask-sklearn/actions/workflows/python-app.yml)
+[![Python application test with Github Actions](https://github.com/taofeekaoyusuf/flask-ml-service/actions/workflows/python-app.yml/badge.svg)](https://github.com/taofeekaoyusuf/flask-ml-service/actions/workflows/python-app.yml)
 
 <!---
-[![Build Status](https://dev.azure.com/daimler-mic/ddpdev-azure-devops/_apis/build/status/imhofmi.flask-sklearn?branchName=main)](https://dev.azure.com/daimler-mic/ddpdev-azure-devops/_build/latest?definitionId=7205&branchName=main)
+[![Build Status](https://dev.azure.com/daimler-mic/ddpdev-azure-devops/_apis/build/status/taofeekaoyusuf.flask-ml-service?branchName=main)](https://dev.azure.com/daimler-mic/ddpdev-azure-devops/_build/latest?definitionId=7205&branchName=main)
 -->
 
 ## Project Plan
@@ -53,46 +53,46 @@ Finally, the combination of Continuous integration and Continuous Delivery (CI/C
 
 ### Cloning and Testing Locally
 
-Head to https://github.com and clone the repo https://github.com/imhofmi/flask-sklearn.
+Head to https://github.com and clone the repo https://github.com/taofeekaoyusuf/flask-ml-service.
 The following instructions will use the original repo, you should replace them with your cloned repo.
 
 Login to Azure and open the Azure cloud shell.
 
 Clone this project from github and change to the project directory:
 ```bash
-azureuser@Azure:~$ git clone https://github.com/imhofmi/flask-sklearn.git
-azureuser@Azure:~$ cd flask-sklearn
+azureuser@Azure:~$ git clone https://github.com/taofeekaoyusuf/flask-ml-service.git
+azureuser@Azure:~$ cd fflask-ml-service
 ```
 
 Create a virtual environment and source it:
 ```bash
-azureuser@Azure:~/flask-sklearn$ make setup
-azureuser@Azure:~/flask-sklearn$ source ~/.flask-sklearn/bin/activate
+azureuser@Azure:~/flask-ml-service$ make setup
+azureuser@Azure:~/flask-ml-service$ source ~/.flask-ml-service/bin/activate
 ```
 
-![Clone repo / Create virtual environment](screenshots/S1-clone-make-source.PNG "Clone repo / Create virtual environment")
+![Clone repo / Create virtual environment](snapshots/01_Git-Clone-From-Repo_Passed_Successfully.png "Clone repo / Create virtual environment")
 
 
 Build locally using 'make all' which will install all dependencies, perform linting and testing:
 ```bash
-azureuser@Azure:~/flask-sklearn$ make all
+azureuser@Azure:~/flask-ml-service$ make all
 ```
 
-![Build project](screenshots/S2-make-all.PNG "Build project")
+![Build project](snapshots/02_make_all_successfully_passed.png "Build project")
 
 
 Run the application locally:
 ```bash
-(.flask-sklearn) azureuser@Azure:~/flask-sklearn$ flask run
+(.flask-ml-service) azureuser@Azure:~/flask-ml-service$ flask run
 ```
 
 ![Run project](screenshots/S3-flask-run.PNG "Run project")
 
 Test it locally in a new Azure cloud shell (as your first shell is blocked by 'flask run') :
 ```bash
-azureuser@Azure:~$ source .flask-sklearn/bin/activate
-(.flask-sklearn) azureuser@Azure:~$ cd flask-sklearn/
-(.flask-sklearn) azureuser@Azure:~/flask-sklearn$ ./make_prediction.sh
+azureuser@Azure:~$ source .flask-ml-service/bin/activate
+(.flask-ml-service) azureuser@Azure:~$ cd flask-ml-service/
+(.flask-ml-service) azureuser@Azure:~/flask-ml-service$ ./make_prediction.sh
 ```
 
 ![Test locally](screenshots/S4-make_prediction.sh.PNG "Test locally")
@@ -103,18 +103,18 @@ Close the second cloud shell and stop flask by hitting CRTL-C in the first cloud
 ### Setting up CI using Github Actions
 If you directly jumped to this section: Clone the repo:
 ```bash
-azureuser@Azure:~$ git clone git@github.com:imhofmi/flask-sklearn.git
+azureuser@Azure:~$ git clone git@github.com:imhofmi/flask-ml-service.git
 ```
 ![Clone repo](screenshots/01_Cloud_Shell_Project_Cloned.PNG "Clone Repo")
 Setup a virtual environment and activate it:
 ```bash
-azureuser@Azure:~/flask-sklearn$ make setup
-azureuser@Azure:~/flask-sklearn$ source ~/.flask-sklearn/bin/activate
+azureuser@Azure:~/flask-ml-service$ make setup
+azureuser@Azure:~/flask-ml-service$ source ~/.flask-ml-service/bin/activate
 ```
 
 Ensure that all tests pass locally:
 ```bash
-(.flask-sklearn) azureuser@Azure:~/flask-sklearn$ make all
+(.flask-ml-service) azureuser@Azure:~/flask-ml-service$ make all
 ```
 ![Passing tests locally](screenshots/02_Cloud_Shell_make_all_passing_tests.PNG "Passing tests locally")
 
@@ -127,38 +127,38 @@ Once the workflow is created it is automatically triggered and should show a pas
 ### Deploying to Azure App Services
 Install the app to Azure app services using the free tier:
 ```bash
-(.flask-sklearn) azureuser@Azure:~/flask-sklearn$ az webapp up -n flask-sklearn --sku F1
+(.flask-ml-service) azureuser@Azure:~/flask-ml-service$ az webapp up -n myflaskmlwebappy --sku F1
 ```
 
 ![Install to Azure app services](screenshots/S5-az-webapp-up.PNG "Install to Azure app services")
 
-Check if the app is up and running by opening the URL containing the webapp name provided in the previous step: https://flask-sklearn.azurewebsites.net/
+Check if the app is up and running by opening the URL containing the webapp name provided in the previous step: https://myflaskmlwebappy.azurewebsites.net/
 
 ![Running webapp](screenshots/S6-webapp-running.PNG "Running webapp")
 
-Edit file 'make_predict_azure_app.sh' and replace '< yourappname >' with your webapp name (e.g. flask-sklearn).
+Edit file 'make_predict_azure_app.sh' and replace '< yourappname >' with your webapp name (e.g. flask-ml-service).
 
 Test the remote webapp:
 ```bash
-(.flask-sklearn) azureuser@Azure:~/flask-sklearn$ ./make_predict_azure_app.sh
+(.flask-ml-service) azureuser@Azure:~/flask-ml-service$ ./make_predict_azure_app.sh
 ```
 ![Test remotely](screenshots/S7-make_predict_azure_app.sh.PNG "Test remotely")
 
 Logs of your running webapp can be accessed in two ways:
 
-A. Via the public endpoint by appending '/api/logs/docker': https://flask-sklearn.scm.azurewebsites.net/api/logs/docker
+A. Via the public endpoint by appending '/api/logs/docker': https://myflaskmlwebappy.scm.azurewebsites.net/api/logs/docker
 
 B. Via your cloud shell as a stream:
 ```bash
-(.flask-sklearn) azureuser@Azure:~/flask-sklearn$ az webapp log tail
+(.flask-ml-service) azureuser@Azure:~/flask-ml-service$ az webapp log tail
 ```
 ![Streamed webapp logs](screenshots/S13-webapp-logs.PNG "Streamed webapp logs")
 
 Performance validation of the webapp can be performed via a load test using [locust](https://locust.io).
 Replace '< yourappname >' in the provided configuration and call locust:
 ```bash
-(.flask-sklearn) azureuser@Azure:~/flask-sklearn$ nano locustfile.py
-(.flask-sklearn) azureuser@Azure:~/flask-sklearn$ locust -f locustfile.py --headless -u 20 -r 5 -t 20s
+(.flask-ml-service) azureuser@Azure:~/flask-ml-service$ nano locustfile.py
+(.flask-ml-service) azureuser@Azure:~/flask-ml-service$ locust -f locustfile.py --headless -u 20 -r 5 -t 20s
 ```
 Using the parameters above locust will use 20 users with a spawn rate of 5 users per second and run for 20 seconds:
 ![Load test using locust](screenshots/S14-load-test-locust.PNG "Load test using locust")
@@ -176,7 +176,7 @@ Head to Pipelines and click on 'New pipeline'.
 
 When you are asked 'Where is your code?' select Github and choose your cloned repo.
 
-Configure your pipeline as a "Python to Linux Web App on Azure", select your subscription and the webapp name you used to deploy the webapp earlier (e.g. flask-sklearn).
+Configure your pipeline as a "Python to Linux Web App on Azure", select your subscription and the webapp name you used to deploy the webapp earlier (e.g. flask-ml-service).
 Click on 'Validate and configure'.
 
 ![Created pipeline](screenshots/S8-pipeline-created.PNG "Created pipeline")
@@ -189,10 +189,10 @@ From now on every change to your code will trigger the CI/CD pipeline and update
 
 Change the application name in app.py from 'Sklearn Prediction Home' to 'Sklearn Prediction Home via Azure CI/CD Pipeline' and commit it:
 ```bash
-(.flask-sklearn) azureuser@Azure:~/flask-sklearn$ nano app.py
-(.flask-sklearn) azureuser@Azure:~/flask-sklearn$ git add app.py
-(.flask-sklearn) azureuser@Azure:~/flask-sklearn$ git commit -m "Changed application name"
-(.flask-sklearn) azureuser@Azure:~/flask-sklearn$ git push
+(.flask-ml-service) azureuser@Azure:~/flask-ml-service$ nano app.py
+(.flask-ml-service) azureuser@Azure:~/flask-ml-service$ git add app.py
+(.flask-ml-service) azureuser@Azure:~/flask-ml-service$ git commit -m "Changed application name"
+(.flask-ml-service) azureuser@Azure:~/flask-ml-service$ git push
 ```
 ![Change application name](screenshots/S10-change-application-name.PNG "Change application name")
 
