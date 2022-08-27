@@ -199,10 +199,10 @@ Change the application name in app.py from 'Sklearn Prediction Home' to 'Sklearn
 (.flask-ml-service) azureuser@Azure:~/flask-ml-service$ git commit -m "Changed application name"
 (.flask-ml-service) azureuser@Azure:~/flask-ml-service$ git push
 ```
-![Change application name](screenshots/S10-change-application-name.PNG "Change application name")
+![Change application name](snapshots/initiating_CI-CD_trigger.png "Change application name")
 
 The pipeline is triggered by the commit:
-![Next pipeline run](screenshots/S11-next-pipeline-run.PNG "Next pipeline run")
+![Next pipeline run](snapshots/trigger-CI-CD.png "Next pipeline run")
 
 After the pipeline run completed successfully the changed application name is visible:
 ![Updated webapp](screenshots/S12-webapp-running-new-name.PNG "Updated webapp")
