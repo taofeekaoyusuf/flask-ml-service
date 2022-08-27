@@ -161,7 +161,7 @@ Replace '< yourappname >' in the provided configuration and call locust:
 (.flask-ml-service) azureuser@Azure:~/flask-ml-service$ locust -f locustfile.py --headless -u 20 -r 5 -t 20s
 ```
 Using the parameters above locust will use 20 users with a spawn rate of 5 users per second and run for 20 seconds:
-![Load test using locust](screenshots/S14-load-test-locust.PNG "Load test using locust")
+![Load test using locust](snapshots/WebApp_Performance_Validation.png "Load test using locust")
 
 
 ### Setting up CI/CD using Azure Pipelines
@@ -179,11 +179,11 @@ When you are asked 'Where is your code?' select Github and choose your cloned re
 Configure your pipeline as a "Python to Linux Web App on Azure", select your subscription and the webapp name you used to deploy the webapp earlier (e.g. flask-ml-service).
 Click on 'Validate and configure'.
 
-![Created pipeline](screenshots/S8-pipeline-created.PNG "Created pipeline")
+![Created pipeline](snapshots/AzurePipeline_Configurations.png "Created pipeline")
 
 Under 'Pipelines' you should now see a first successfull run of the pipeline including the 'Build stage' and the 'Deploy Web App' stage:
 
-![First pipeline run](screenshots/S9-first-pipeline-run.PNG "First pipeline run")
+![pipeline run](snapshots/Azure-Pipeline-Deployment_Passed_Successfully.png "pipeline run")
 
 From now on every change to your code will trigger the CI/CD pipeline and update your webapp accordingly:
 
