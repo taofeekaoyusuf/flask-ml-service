@@ -55,7 +55,7 @@ Login to Azure and open the Azure cloud shell.
 Clone this project from github and change to the project directory:
 ```bash
 azureuser@Azure:~$ git clone https://github.com/taofeekaoyusuf/flask-ml-service.git
-azureuser@Azure:~$ cd fflask-ml-service
+azureuser@Azure:~$ cd flask-ml-service
 ```
 
 Create a virtual environment and source it:
@@ -212,7 +212,7 @@ Future improvements include but are not limited to:
 ## Demo
 
 A short demo demonstrates the main steps of the project can be found at this YouTube link:
-[Demo Video](../../raw/main/demo/demo.mp4)
+[Demo Video](https://youtu.be/tr_Fm8uEHJ0)
 
 The demo covers the following steps:
 > Welcome to the demo of the Agile project development.
