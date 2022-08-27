@@ -49,12 +49,6 @@ curl -d '{
    -X POST http://localhost:$PORT/predict
 
 
-# #!/usr/bin/env bash
-
-# PORT=5000
-# echo "Port: $PORT"
-
-# # POST method predict
 # curl -d '{
 #    "CHAS":{
 #       "0":0
@@ -74,7 +68,4 @@ curl -d '{
 #    "LSTAT":{
 #       "0":4.98
 #    }
-# }'\
-#    -H "Content-Type: application/json" \
-#    -X POST http://localhost:$PORT/predict
-
+# }

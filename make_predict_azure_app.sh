@@ -49,10 +49,6 @@ curl -d '{
    -X POST https://myflaskmlwebappy.azurewebsites.net:$PORT/predict
    #your application name <yourappname>goes here
 
-# #!/usr/bin/env bash
-
-# PORT=443
-# echo "Port: $PORT"
 
 # # POST method predict
 # curl -d '{
@@ -74,8 +70,5 @@ curl -d '{
 #    "LSTAT":{
 #       "0":4.98
 #    }
-# }'\
-#    -H "Content-Type: application/json" \
-#    -X POST https://myflaskmlwebappy.azurewebsites.net:$PORT/predict 
-#    #your application name <yourappname>goes here
+# }'
 
