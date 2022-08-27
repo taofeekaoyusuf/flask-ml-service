@@ -20,7 +20,7 @@ def scale(payload):
 
 @app.route("/")
 def home():
-    html = "<h3>Sklearn Prediction for MyFlask-ML-WebApp</h3>"
+    html = "<h3>Sklearn Prediction for MyFlask-ML-WebApp (Triggering CI/CD)</h3>"
     return html.format(format)
 
 # TO DO:  Log out the prediction value!
