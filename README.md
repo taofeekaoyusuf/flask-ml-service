@@ -95,7 +95,7 @@ azureuser@Azure:~$ source .flask-ml-service/bin/activate
 (.flask-ml-service) azureuser@Azure:~/flask-ml-service$ ./make_prediction.sh
 ```
 
-![Test locally](screenshots/S4-make_prediction.sh.PNG "Test locally")
+![Test locally](snapshots/App_verified_Locally.png "Test locally")
 
 Close the second cloud shell and stop flask by hitting CRTL-C in the first cloud shell.
 
@@ -103,9 +103,9 @@ Close the second cloud shell and stop flask by hitting CRTL-C in the first cloud
 ### Setting up CI using Github Actions
 If you directly jumped to this section: Clone the repo:
 ```bash
-azureuser@Azure:~$ git clone git@github.com:imhofmi/flask-ml-service.git
+azureuser@Azure:~$ git clone git@github.com:taofeekaoyusuf/flask-ml-service.git
 ```
-![Clone repo](screenshots/01_Cloud_Shell_Project_Cloned.PNG "Clone Repo")
+![Clone repo](snapshots/01_Git-Clone-From-Repo_Passed_Successfully.png "Clone Repo")
 Setup a virtual environment and activate it:
 ```bash
 azureuser@Azure:~/flask-ml-service$ make setup
@@ -116,25 +116,25 @@ Ensure that all tests pass locally:
 ```bash
 (.flask-ml-service) azureuser@Azure:~/flask-ml-service$ make all
 ```
-![Passing tests locally](screenshots/02_Cloud_Shell_make_all_passing_tests.PNG "Passing tests locally")
+![Passing tests locally](snapshots/02_make_all_successfully_passed.png "Passing tests locally")
 
-Enable Github Actions by clicking on 'Actions', then click on "set up a workflow yourself' and use the GitHub Actions yaml file [.github/workflows/python-app.yml](.github/workflows/python-app.yml) as a template.
+Enable Github Actions by clicking on 'Actions', then click on "set up a workflow yourself' and use the GitHub Actions yaml file [.github/workflows/main.yml](.github/workflows/main.yml) as a template.
 
 Once the workflow is created it is automatically triggered and should show a passing build:
-![Passing build](screenshots/03_GitHub_Actions_passing_build.PNG "Passing build")
+![Passing build](snapshots/03_GitHub_Action_Passed_Successfully.png "Passing build")
 
 
 ### Deploying to Azure App Services
 Install the app to Azure app services using the free tier:
 ```bash
-(.flask-ml-service) azureuser@Azure:~/flask-ml-service$ az webapp up -n myflaskmlwebappy --sku F1
+(.flask-ml-service) azureuser@Azure:~/flask-ml-service$ az webapp up --name myflaskmlwebappy --resource-group Azuredevops --runtime "PYTHON:3.7"
 ```
 
-![Install to Azure app services](screenshots/S5-az-webapp-up.PNG "Install to Azure app services")
+![Install to Azure app services](snapshots/04_WebApp_Creation_Passed_Successfully.png "Install to Azure app services")
 
 Check if the app is up and running by opening the URL containing the webapp name provided in the previous step: https://myflaskmlwebappy.azurewebsites.net/
 
-![Running webapp](screenshots/S6-webapp-running.PNG "Running webapp")
+![Running webapp](snapshots/05_WebApp_Creation_Verifification_Passed_Successfully.png "Running webapp")
 
 Edit file 'make_predict_azure_app.sh' and replace '< yourappname >' with your webapp name (e.g. flask-ml-service).
 
@@ -142,7 +142,7 @@ Test the remote webapp:
 ```bash
 (.flask-ml-service) azureuser@Azure:~/flask-ml-service$ ./make_predict_azure_app.sh
 ```
-![Test remotely](screenshots/S7-make_predict_azure_app.sh.PNG "Test remotely")
+![Test remotely](snapshots/06_Prediction_Output_Passed_Successfully.png "Test remotely")
 
 Logs of your running webapp can be accessed in two ways:
 
@@ -152,9 +152,9 @@ B. Via your cloud shell as a stream:
 ```bash
 (.flask-ml-service) azureuser@Azure:~/flask-ml-service$ az webapp log tail
 ```
-![Streamed webapp logs](screenshots/S13-webapp-logs.PNG "Streamed webapp logs")
+![Streamed webapp logs](snapshots/06_Log_Stream_on_Azure-CLI.png "Streamed webapp logs")
 
-Performance validation of the webapp can be performed via a load test using [locust](https://locust.io).
+Performance validation of the webapp can be performed via a load test using [locust](https://locust.io). \
 Replace '< yourappname >' in the provided configuration and call locust:
 ```bash
 (.flask-ml-service) azureuser@Azure:~/flask-ml-service$ nano locustfile.py
